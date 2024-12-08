@@ -1,0 +1,16 @@
+{
+	"dartBarrel.files.disableRecursiveBarrelling": "Deshabilitar la recursión para subdirectorios al crear el archivo de barril.",
+	"dartBarrel.files.includeExtensionOnExport": "Extensiones a incluir en la exportación. Esto se utiliza para filtrar los archivos a exportar.",
+	"dartBarrel.files.ignoreFilePathPatternOnExport": "Patrones globales a ignorar en la exportación. Esto se utiliza para filtrar los archivos a exportar.",
+	"dartBarrel.files.supportsHiddenFiles": "Soportar archivos y directorios ocultos al exportar (archivos que comienzan con un punto).",
+	"dartBarrel.files.preserveGitignoreSettings": "Preservar la configuración del archivo .gitignore al exportar.",
+	"dartBarrel.files.enableClassExportDetection": "Habilitar la detección de exportación de clases.",
+	"dartBarrel.files.exportDefaultFilename": "Nombre de archivo predeterminado a utilizar al exportar los archivos.",
+	"dartBarrel.files.outputFilePrefix": "Prefijo a utilizar para el archivo de salida.",
+	"dartBarrel.files.outputFileSuffix": "Sufijo a utilizar para el archivo de salida.",
+	"dartBarrel.files.outputFileSeparator": "Separador a utilizar para el archivo de salida.",
+	"dartBarrel.formatting.endOfLine": "Carácter de fin de línea a utilizar.",
+	"dartBarrel.formatting.insertFinalNewline": "Insertar una nueva línea al final del archivo.",
+	"dartBarrel.createBarrel": "Crear un archivo de barrel",
+	"dartBarrel.updateBarrel": "Actualizar el archivo barrel"
+}

@@ -1,0 +1,245 @@
+{
+	"name": "ovsx-dart-barrel",
+	"displayName": "Dart Barrel File",
+	"description": "🛢️ Generate and update barrel files for Dart and Flutter projects.",
+	"version": "1.0.0",
+	"icon": "icon.png",
+	"license": "MIT",
+	"publisher": "imgildev",
+	"author": "ManuelGil",
+	"sponsor": {
+		"url": "https://github.com/sponsors/ManuelGil"
+	},
+	"engines": {
+		"vscode": "^1.76.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"keywords": [
+		"barrel file",
+		"barrel-file",
+		"barrel",
+		"create",
+		"dart",
+		"development",
+		"directory",
+		"editor",
+		"export",
+		"extension",
+		"file",
+		"flutter",
+		"folder",
+		"generate",
+		"git",
+		"hidden",
+		"ignore",
+		"import",
+		"index",
+		"language",
+		"open",
+		"path",
+		"project",
+		"recursion",
+		"settings",
+		"source",
+		"subdirectory",
+		"subfolder",
+		"support",
+		"update",
+		"update",
+		"vscode"
+	],
+	"homepage": "https://github.com/ManuelGil/ovsx-dart-barrel",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/ManuelGil/ovsx-dart-barrel.git"
+	},
+	"bugs": {
+		"url": "https://github.com/ManuelGil/ovsx-dart-barrel/issues"
+	},
+	"activationEvents": [
+		"onLanguage:dart"
+	],
+	"main": "./out/extension.js",
+	"l10n": "./l10n",
+	"contributes": {
+		"configuration": {
+			"title": "Dart Barrel File",
+			"properties": {
+				"dartBarrel.files.disableRecursiveBarrelling": {
+					"type": "boolean",
+					"default": false,
+					"scope": "resource",
+					"description": "%dartBarrel.files.disableRecursiveBarrelling%"
+				},
+				"dartBarrel.files.includeExtensionOnExport": {
+					"type": "array",
+					"default": [
+						"dart"
+					],
+					"scope": "resource",
+					"description": "%dartBarrel.files.includeExtensionOnExport%"
+				},
+				"dartBarrel.files.ignoreFilePathPatternOnExport": {
+					"type": "array",
+					"default": [
+						"**/*.freezed.dart",
+						"**/*.g.dart"
+					],
+					"scope": "resource",
+					"description": "%dartBarrel.files.ignoreFilePathPatternOnExport%"
+				},
+				"dartBarrel.files.supportsHiddenFiles": {
+					"type": "boolean",
+					"default": true,
+					"scope": "resource",
+					"description": "%dartBarrel.files.supportsHiddenFiles%"
+				},
+				"dartBarrel.files.preserveGitignoreSettings": {
+					"type": "boolean",
+					"default": false,
+					"scope": "resource",
+					"description": "%dartBarrel.files.preserveGitignoreSettings%"
+				},
+				"dartBarrel.files.enableClassExportDetection": {
+					"type": "boolean",
+					"default": true,
+					"scope": "resource",
+					"description": "%dartBarrel.files.enableClassExportDetection%"
+				},
+				"dartBarrel.files.exportDefaultFilename": {
+					"type": "string",
+					"default": "",
+					"scope": "resource",
+					"description": "%dartBarrel.files.exportDefaultFilename%"
+				},
+				"dartBarrel.files.outputFilePrefix": {
+					"type": "string",
+					"default": "",
+					"scope": "resource",
+					"description": "%dartBarrel.files.outputFilePrefix%"
+				},
+				"dartBarrel.files.outputFileSuffix": {
+					"type": "string",
+					"default": "",
+					"scope": "resource",
+					"description": "%dartBarrel.files.outputFileSuffix%"
+				},
+				"dartBarrel.files.outputFileSeparator": {
+					"type": "string",
+					"default": "_",
+					"scope": "resource",
+					"description": "%dartBarrel.files.outputFileSeparator%"
+				},
+				"dartBarrel.formatting.endOfLine": {
+					"type": "string",
+					"default": "lf",
+					"enum": [
+						"crlf",
+						"lf"
+					],
+					"enumDescriptions": [
+						"CRLF",
+						"LF"
+					],
+					"scope": "resource",
+					"description": "%dartBarrel.formatting.endOfLine%"
+				},
+				"dartBarrel.formatting.insertFinalNewline": {
+					"type": "boolean",
+					"default": true,
+					"scope": "resource",
+					"description": "%dartBarrel.formatting.insertFinalNewline%"
+				}
+			}
+		},
+		"commands": [
+			{
+				"command": "dartBarrel.createBarrel",
+				"title": "%dartBarrel.createBarrel%",
+				"category": "Dart Barrel File"
+			},
+			{
+				"command": "dartBarrel.updateBarrel",
+				"title": "%dartBarrel.updateBarrel%",
+				"category": "Dart Barrel File"
+			}
+		],
+		"submenus": [
+			{
+				"id": "dartBarrel.folder.submenu",
+				"label": "Dart Barrel File"
+			},
+			{
+				"id": "dartBarrel.file.submenu",
+				"label": "Dart Barrel File"
+			}
+		],
+		"menus": {
+			"explorer/context": [
+				{
+					"submenu": "dartBarrel.folder.submenu",
+					"group": "2_workspace",
+					"when": "explorerViewletFocus && explorerResourceIsFolder"
+				},
+				{
+					"submenu": "dartBarrel.file.submenu",
+					"group": "2_workspace",
+					"when": "explorerViewletFocus && !explorerResourceIsFolder && resourceExtname =~ /dart/"
+				}
+			],
+			"dartBarrel.folder.submenu": [
+				{
+					"command": "dartBarrel.createBarrel",
+					"group": "ovsx-dart-barrel@1"
+				}
+			],
+			"dartBarrel.file.submenu": [
+				{
+					"command": "dartBarrel.updateBarrel",
+					"group": "ovsx-dart-barrel@1"
+				}
+			]
+		},
+		"jsonValidation": [
+			{
+				"fileMatch": ".vscode/settings.json",
+				"url": "./schemas/config.schema.json"
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "rimraf out && tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"pretest": "npm run compile && npm run lint",
+		"format": "biome format --write",
+		"lint": "biome lint --write",
+		"lint:check": "biome check --write",
+		"test": "node ./out/test/runTest.js",
+		"compodoc": "npx compodoc -p tsconfig.doc.json -d compodoc --theme readthedocs -s",
+		"prepare": "husky"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.9.4",
+		"@commitlint/cli": "^19.6.0",
+		"@commitlint/config-conventional": "^19.6.0",
+		"@compodoc/compodoc": "^1.1.26",
+		"@types/mocha": "^10.0.10",
+		"@types/node": "^22.10.0",
+		"@types/vscode": "^1.76.0",
+		"@vscode/l10n-dev": "^0.0.35",
+		"globals": "^15.12.0",
+		"husky": "^9.1.7",
+		"lint-staged": "^15.2.10",
+		"mocha": "^10.8.2",
+		"rimraf": "^6.0.1",
+		"typescript": "^5.7.2",
+		"vscode-test": "^1.6.1"
+	},
+	"dependencies": {
+		"fast-glob": "^3.3.2",
+		"ignore": "^6.0.2"
+	}
+}
