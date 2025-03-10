@@ -192,36 +192,114 @@ export class ExtensionConfig {
    * @memberof Config
    */
   constructor(readonly config: WorkspaceConfiguration) {
-    this.disableRecursiveBarrelling =
-      config.get<boolean>('files.disableRecursiveBarrelling') ??
-      DISABLE_RECURSIVE;
-    this.includeExtensionOnExport =
-      config.get<string[]>('files.includeExtensionOnExport') ??
-      INCLUDE_EXTENSIONS;
-    this.ignoreFilePathPatternOnExport =
-      config.get<string[]>('files.ignoreFilePathPatternOnExport') ??
-      EXCLUDE_PATTERNS;
-    this.supportsHiddenFiles =
-      config.get<boolean>('files.supportsHiddenFiles') ?? SUPPORTS_HIDDEN;
-    this.preserveGitignoreSettings =
-      config.get<boolean>('files.preserveGitignoreSettings') ??
-      PRESERVE_GITIGNORE;
-    this.enableClassExportDetection =
-      config.get<boolean>('files.enableClassExportDetection') ?? DETECT_EXPORTS;
-    this.exportDefaultFilename =
-      config.get<string>('files.exportDefaultFilename') ?? DEFAULT_FILENAME;
-    this.outputFilePrefix =
-      this.config.get<string>('files.outputFilePrefix') ??
-      DEFAULT_OUTPUT_FILE_PREFIX;
-    this.outputFileSuffix =
-      this.config.get<string>('files.outputFileSuffix') ??
-      DEFAULT_OUTPUT_FILE_SUFFIX;
-    this.outputFileSeparator =
-      this.config.get<string>('files.outputFileSeparator') ??
-      DEFAULT_OUTPUT_FILE_SEPARATOR;
-    this.endOfLine = config.get<string>('formatting.endOfLine') ?? END_OF_LINE;
-    this.insertFinalNewline =
-      config.get<boolean>('formatting.insertFinalNewline') ??
-      INSERT_FINAL_NEWLINE;
+    this.disableRecursiveBarrelling = config.get<boolean>(
+      'files.disableRecursiveBarrelling',
+      DISABLE_RECURSIVE,
+    );
+    this.includeExtensionOnExport = config.get<string[]>(
+      'files.includeExtensionOnExport',
+      INCLUDE_EXTENSIONS,
+    );
+    this.ignoreFilePathPatternOnExport = config.get<string[]>(
+      'files.ignoreFilePathPatternOnExport',
+      EXCLUDE_PATTERNS,
+    );
+    this.supportsHiddenFiles = config.get<boolean>(
+      'files.supportsHiddenFiles',
+      SUPPORTS_HIDDEN,
+    );
+    this.preserveGitignoreSettings = config.get<boolean>(
+      'files.preserveGitignoreSettings',
+      PRESERVE_GITIGNORE,
+    );
+    this.enableClassExportDetection = config.get<boolean>(
+      'files.enableClassExportDetection',
+      DETECT_EXPORTS,
+    );
+    this.exportDefaultFilename = config.get<string>(
+      'files.exportDefaultFilename',
+      DEFAULT_FILENAME,
+    );
+    this.outputFilePrefix = this.config.get<string>(
+      'files.outputFilePrefix',
+      DEFAULT_OUTPUT_FILE_PREFIX,
+    );
+    this.outputFileSuffix = this.config.get<string>(
+      'files.outputFileSuffix',
+      DEFAULT_OUTPUT_FILE_SUFFIX,
+    );
+    this.outputFileSeparator = this.config.get<string>(
+      'files.outputFileSeparator',
+      DEFAULT_OUTPUT_FILE_SEPARATOR,
+    );
+    this.endOfLine = config.get<string>('formatting.endOfLine', END_OF_LINE);
+    this.insertFinalNewline = config.get<boolean>(
+      'formatting.insertFinalNewline',
+      INSERT_FINAL_NEWLINE,
+    );
+  }
+
+  // -----------------------------------------------------------------
+  // Methods
+  // -----------------------------------------------------------------
+
+  // Public methods
+  /**
+   * The update method.
+   *
+   * @function update
+   * @param {WorkspaceConfiguration} config - The workspace configuration
+   * @public
+   * @memberof Config
+   * @example
+   * const config = new Config(workspace.getConfiguration());
+   * config.update(workspace.getConfiguration());
+   */
+  update(config: WorkspaceConfiguration): void {
+    this.disableRecursiveBarrelling = config.get<boolean>(
+      'files.disableRecursiveBarrelling',
+      this.disableRecursiveBarrelling,
+    );
+    this.includeExtensionOnExport = config.get<string[]>(
+      'files.includeExtensionOnExport',
+      this.includeExtensionOnExport,
+    );
+    this.ignoreFilePathPatternOnExport = config.get<string[]>(
+      'files.ignoreFilePathPatternOnExport',
+      this.ignoreFilePathPatternOnExport,
+    );
+    this.supportsHiddenFiles = config.get<boolean>(
+      'files.supportsHiddenFiles',
+      this.supportsHiddenFiles,
+    );
+    this.preserveGitignoreSettings = config.get<boolean>(
+      'files.preserveGitignoreSettings',
+      this.preserveGitignoreSettings,
+    );
+    this.enableClassExportDetection = config.get<boolean>(
+      'files.enableClassExportDetection',
+      this.enableClassExportDetection,
+    );
+    this.exportDefaultFilename = config.get<string>(
+      'files.exportDefaultFilename',
+      this.exportDefaultFilename,
+    );
+    this.outputFilePrefix = config.get<string>(
+      'files.outputFilePrefix',
+      this.outputFilePrefix,
+    );
+    this.outputFileSuffix = config.get<string>(
+      'files.outputFileSuffix',
+      this.outputFileSuffix,
+    );
+    this.outputFileSeparator = config.get<string>(
+      'files.outputFileSeparator',
+      this.outputFileSeparator,
+    );
+    this.endOfLine = config.get<string>('formatting.endOfLine', this.endOfLine);
+    this.insertFinalNewline = config.get<boolean>(
+      'formatting.insertFinalNewline',
+      this.insertFinalNewline,
+    );
   }
 }

@@ -1,4 +1,4 @@
-// The module 'vscode' contains the VS Code extensibility API
+// The module 'vscode' contains the VSCode extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 import { VSCodeMarketplaceClient } from 'vscode-marketplace-client';
@@ -54,6 +54,18 @@ export async function activate(context: vscode.ExtensionContext) {
     vscode.workspace.getConfiguration(EXTENSION_ID, resource?.uri),
   );
 
+  // Watch for changes in the configuration
+  vscode.workspace.onDidChangeConfiguration((event) => {
+    const workspaceConfig = vscode.workspace.getConfiguration(
+      EXTENSION_ID,
+      resource?.uri,
+    );
+
+    if (event.affectsConfiguration(EXTENSION_ID, resource?.uri)) {
+      config.update(workspaceConfig);
+    }
+  });
+
   // -----------------------------------------------------------------
   // Get version of the extension
   // -----------------------------------------------------------------
@@ -65,7 +77,10 @@ export async function activate(context: vscode.ExtensionContext) {
 
   // Check if the extension is running for the first time
   if (!previousVersion) {
-    const message = vscode.l10n.t('Welcome to {0}!', [EXTENSION_DISPLAY_NAME]);
+    const message = vscode.l10n.t(
+      'Welcome to {0} version {1}! The extension is now active',
+      [EXTENSION_DISPLAY_NAME, currentVersion],
+    );
     vscode.window.showInformationMessage(message);
 
     // Update the version in the global state
@@ -75,7 +90,7 @@ export async function activate(context: vscode.ExtensionContext) {
   // Check if the extension has been updated
   if (previousVersion && previousVersion !== currentVersion) {
     const message = vscode.l10n.t(
-      'Looks like {0} has been updated to version {1}!',
+      "The {0} extension has been updated. Check out what's new in version {1}",
       [EXTENSION_DISPLAY_NAME, currentVersion],
     );
     vscode.window.showInformationMessage(message);
