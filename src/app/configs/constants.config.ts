@@ -35,6 +35,18 @@ export const EXTENSION_NAME: string = 'ovsx-dart-barrel';
 export const EXTENSION_DISPLAY_NAME: string = 'Dart Barrel File';
 
 /**
+ * USER_PUBLISHER: The publisher of the extension.
+ * @type {string}
+ * @public
+ * @memberof Constants
+ * @example
+ * console.log(USER_PUBLISHER);
+ *
+ * @returns {string} - The publisher of the extension
+ */
+export const USER_PUBLISHER: string = 'imgildev';
+
+/**
  * RECURSIVE_BARRELLING: The flag to recursively barrel.
  * @type {boolean}
  * @public

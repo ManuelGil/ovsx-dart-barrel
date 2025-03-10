@@ -2,7 +2,7 @@
 	"name": "ovsx-dart-barrel",
 	"displayName": "Dart Barrel File",
 	"description": "🛢️ Generate and update barrel files for Dart and Flutter projects.",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"icon": "icon.png",
 	"license": "MIT",
 	"publisher": "imgildev",
@@ -240,6 +240,7 @@
 	},
 	"dependencies": {
 		"fast-glob": "^3.3.2",
-		"ignore": "^6.0.2"
+		"ignore": "^6.0.2",
+		"vscode-marketplace-client": "^1.0.0"
 	}
 }
